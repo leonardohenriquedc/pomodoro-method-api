@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name  = "tb_user")
+@Table(name = "tb_user")
 public class User {
 
     @Id
@@ -15,35 +15,23 @@ public class User {
 
     private String name;
 
-    @Column(unique = true)
-    private String email;
+    @OneToMany(mappedBy = "user")
+    private List<Pomodoro> pomodoros = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Pomodoro> pomodoroConfigured = new ArrayList<>();
-
-    public User(String name, String email) {
+    public User(String name, List<Pomodoro> pomodoros) {
         this.name = name;
-        this.email = email;
+        this.pomodoros = pomodoros;
     }
 
     public User() {
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                '}';
-    }
-
-    public List<Pomodoro> getPomodoroConfigured() {
-        return pomodoroConfigured;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -54,11 +42,11 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public List<Pomodoro> getPomodoros() {
+        return pomodoros;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPomodoros(List<Pomodoro> pomodoros) {
+        this.pomodoros = pomodoros;
     }
 }

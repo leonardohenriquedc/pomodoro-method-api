@@ -15,13 +15,12 @@ public class Pomodoro {
     private Integer minutesOfStudy;
 
     @ManyToOne
-    @Column(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
-    public Pomodoro(Integer minutesOfInterval, Integer minutesOfStudy, User user) {
+    public Pomodoro(Integer minutesOfInterval, Integer minutesOfStudy) {
         this.minutesOfInterval = minutesOfInterval;
         this.minutesOfStudy = minutesOfStudy;
-        this.user = user;
     }
 
     public Pomodoro() {
@@ -31,12 +30,8 @@ public class Pomodoro {
         return id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getMinutesOfInterval() {
@@ -53,5 +48,13 @@ public class Pomodoro {
 
     public void setMinutesOfStudy(Integer minutesOfStudy) {
         this.minutesOfStudy = minutesOfStudy;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

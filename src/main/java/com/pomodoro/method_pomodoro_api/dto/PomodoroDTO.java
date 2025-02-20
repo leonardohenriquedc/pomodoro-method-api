@@ -1,33 +1,27 @@
 package com.pomodoro.method_pomodoro_api.dto;
 
 import com.pomodoro.method_pomodoro_api.entities.Pomodoro;
-import com.pomodoro.method_pomodoro_api.entities.User;
 
 public class PomodoroDTO {
 
-    private User user;
-
     private Long id;
 
-    private int minutesOfStudy;
+    private Integer minutesOfInterval;
 
-    private int minutesOfInterval;
+    private Integer minutesOfStudy;
 
-    public PomodoroDTO(User user, int minutesOfStudy, int minutesOfInterval) {
-        this.user = user;
-        this.minutesOfStudy = minutesOfStudy;
+    public PomodoroDTO(Long id, Integer minutesOfInterval, Integer minutesOfStudy) {
+        this.id = id;
         this.minutesOfInterval = minutesOfInterval;
+        this.minutesOfStudy = minutesOfStudy;
     }
 
-    public PomodoroDTO(){
-    }
-
-    public PomodoroDTO(Pomodoro pomodoro){
-        this.user = pomodoro.getUser();
-
-        this.minutesOfInterval = pomodoro.getMinutesOfInterval();
+    public PomodoroDTO (Pomodoro pomodoro){
+        this.id = pomodoro.getId();
 
         this.minutesOfStudy = pomodoro.getMinutesOfStudy();
+
+        this.minutesOfInterval = pomodoro.getMinutesOfInterval();
     }
 
     public Long getId() {
@@ -38,27 +32,19 @@ public class PomodoroDTO {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public int getMinutesOfStudy() {
-        return minutesOfStudy;
-    }
-
-    public void setMinutesOfStudy(int minutesOfStudy) {
-        this.minutesOfStudy = minutesOfStudy;
-    }
-
-    public int getMinutesOfInterval() {
+    public Integer getMinutesOfInterval() {
         return minutesOfInterval;
     }
 
-    public void setMinutesOfInterval(int minutesOfInterval) {
+    public void setMinutesOfInterval(Integer minutesOfInterval) {
         this.minutesOfInterval = minutesOfInterval;
+    }
+
+    public Integer getMinutesOfStudy() {
+        return minutesOfStudy;
+    }
+
+    public void setMinutesOfStudy(Integer minutesOfStudy) {
+        this.minutesOfStudy = minutesOfStudy;
     }
 }
