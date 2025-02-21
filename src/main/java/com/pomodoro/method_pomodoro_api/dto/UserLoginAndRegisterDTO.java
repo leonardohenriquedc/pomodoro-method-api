@@ -1,13 +1,8 @@
 package com.pomodoro.method_pomodoro_api.dto;
 
-import com.pomodoro.method_pomodoro_api.entities.User;
 import jakarta.validation.constraints.NotBlank;
-import org.springframework.aop.target.LazyInitTargetSource;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class UserDTO {
+public class UserLoginAndRegisterDTO {
 
     private Long id;
 
@@ -17,24 +12,13 @@ public class UserDTO {
     @NotBlank(message = "Campo não pode ser vazio")
     private String password;
 
-    private List<PomodoroDTO> pomdoroDTOS = new ArrayList<>();
-
-    public UserDTO(Long id, String name, String password, List<PomodoroDTO> pomdoroDTOS) {
+    public UserLoginAndRegisterDTO(Long id, String name, String password) {
         this.id = id;
         this.name = name;
         this.password = password;
-        this.pomdoroDTOS = pomdoroDTOS;
     }
 
-    public UserDTO(User user){
-        this.id = user.getId();
-
-        this.name = user.getName();
-
-        this.password = user.getPassword();
-    }
-
-    public UserDTO(){
+    public UserLoginAndRegisterDTO() {
     }
 
     public String getPassword() {
@@ -61,21 +45,12 @@ public class UserDTO {
         this.name = name;
     }
 
-    public List<PomodoroDTO> getPomdoroDTOS() {
-        return pomdoroDTOS;
-    }
-
-    public void setPomdoroDTOS(List<PomodoroDTO> pomdoroDTOS) {
-        this.pomdoroDTOS = pomdoroDTOS;
-    }
-
     @Override
     public String toString() {
-        return "UserDTO{" +
+        return "UserLoginAndRegisterDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", pomdoroDTOS=" + pomdoroDTOS +
                 '}';
     }
 }

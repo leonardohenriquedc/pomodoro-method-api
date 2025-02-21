@@ -15,15 +15,27 @@ public class User {
 
     private String name;
 
+    private String password;
+
     @OneToMany(mappedBy = "user")
     private List<Pomodoro> pomodoros = new ArrayList<>();
 
-    public User(String name, List<Pomodoro> pomodoros) {
+    public User(String name, String password, List<Pomodoro> pomodoros) {
         this.name = name;
         this.pomodoros = pomodoros;
+
+        this.password = password;
     }
 
     public User() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -48,5 +60,15 @@ public class User {
 
     public void setPomodoros(List<Pomodoro> pomodoros) {
         this.pomodoros = pomodoros;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", pomodoros=" + pomodoros +
+                '}';
     }
 }
